@@ -20,6 +20,7 @@ def clean_and_merge(students, enrollments, results_path):
 
     students['age'] = (dt.datetime.now() - students['date_of_birth'])
     students['age'] = students['age'].dt.days / 365.25
+    students = students.astype({'age': int})
 
     # 3a. for students with 2 majors, collapse each major into
     # a single field ('academic plan'), at the term-level
