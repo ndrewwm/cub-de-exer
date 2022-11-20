@@ -35,7 +35,7 @@ def clean_and_merge(students, enrollments, results_path):
     # 4. split the class_id field into its segments, dropping the placeholder and original column
     enrollments[['course_subject', 'ph', 'course_number', 'course_section']] = enrollments['class_id'].str.split('-', 3, expand = True)
 
-    enroll = enrollments.drop(['ph', 'class_id'], axis = 1)
+    enroll = enrollments.drop(['ph'], axis = 1)
 
     # 5. merge the two cleaned dataframes (only keeping records which have matches in both
     # files), then write the results to the specified path
