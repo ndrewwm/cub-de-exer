@@ -32,7 +32,7 @@ def clean_and_merge(students, enrollments, results_path):
     students = students.merge(majors, how = 'left', on = ['term_id', 'student_id'])
     students = students.rename(columns = {'major': 'academic_plans'})
 
-    # 4. split the class_id field into its segments, dropping the placeholder and original column
+    # 4. split the class_id field into its segments, dropping the placeholder
     enrollments[['course_subject', 'ph', 'course_number', 'course_section']] = enrollments['class_id'].str.split('-', 3, expand = True)
 
     enroll = enrollments.drop(['ph'], axis = 1)
